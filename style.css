@@ -110,3 +110,76 @@ margin:auto;
 padding:80px 20px;
 
 }
+.page-hero{
+  padding: 90px 20px 30px;
+  background: #111;
+  color: #fff;
+}
+
+.page-hero-inner{
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.backlink{
+  display: inline-block;
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  margin-bottom: 16px;
+}
+
+.backlink:hover{
+  color: #fff;
+}
+
+.page{
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+  display: grid;
+  gap: 24px;
+}
+
+.card{
+  background: #fff;
+  border-radius: 12px;
+  padding: 28px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+.form{
+  display: grid;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+label{
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
+}
+
+input, textarea{
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.12);
+  font-size: 16px;
+}
+
+input:focus, textarea:focus{
+  outline: none;
+  border-color: rgba(0,0,0,0.4);
+}
+
+.small{
+  font-size: 14px;
+  opacity: 0.75;
+  margin-top: 14px;
+}
+
+.footer{
+  padding: 30px 20px;
+  text-align: center;
+  opacity: 0.7;
+}

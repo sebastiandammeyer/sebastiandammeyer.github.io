@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Få et tilbud – Andys Snedkerfirma</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="page-hero">
+    <div class="page-hero-inner">
+      <a class="backlink" href="index.html">← Tilbage</a>
+      <h1>Få et tilbud</h1>
+      <p>Beskriv opgaven kort, så vender jeg hurtigt tilbage.</p>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="card">
+      <h2>Kontakt</h2>
+
+      <form class="form" action="mailto:kontakt@mail.dk" method="post" enctype="text/plain">
+        <label>
+          Navn
+          <input type="text" name="navn" placeholder="Dit navn" required />
+        </label>
+
+        <label>
+          Telefon
+          <input type="tel" name="telefon" placeholder="Dit nummer" />
+        </label>
+
+        <label>
+          Email
+          <input type="email" name="email" placeholder="din@mail.dk" required />
+        </label>
+
+        <label>
+          Besked
+          <textarea name="besked" rows="6" placeholder="Hvad skal der laves? Materiale/rum/mål/tidsplan..." required></textarea>
+        </label>
+
+        <button class="button" type="submit">Send</button>
+      </form>
+
+      <p class="small">
+        Tip: Hvis du har billeder, så skriv “jeg sender billeder” i beskeden – eller send dem direkte på mail bagefter.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>Alternativt</h2>
+      <p>Telefon: 12 34 56 78</p>
+      <p>Email: kontakt@mail.dk</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© Andys Snedkerfirma</p>
+  </footer>
+</body>
+</html>
