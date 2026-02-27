@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Andys Snedkerfirma</title>
+
+<!-- Model Viewer -->
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --bg:#0b0b0d;
+  --card:rgba(18,18,22,.72);
+  --text:rgba(255,255,255,.92);
+  --muted:rgba(255,255,255,.68);
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family:-apple-system, Helvetica, Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+/* progress bar */
+.progressWrap{
+  position:fixed;
+  top:0; left:0;
+  width:100%;
+  height:3px;
+  background:rgba(255,255,255,.10);
+  z-index:50;
+}
+.progressBar{
+  height:100%;
+  width:0%;
+  background:rgba(255,255,255,.92);
+}
+
+/* scene */
+.stage{
+  height:420vh;
+  background:
+    radial-gradient(900px 450px at 70% 40%, rgba(255,255,255,.10), transparent),
+    radial-gradient(700px 450px at 30% 70%, rgba(255,255,255,.06), transparent),
+    #0b0b0d;
+  position:relative;
+}
+
+.modelWrap{
+  position:sticky;
+  top:0;
+  height:100vh;
+}
+
+model-viewer{
+  width:100%;
+  height:100vh;
+  background:transparent;
+  touch-action:pan-y;
+}
+
+/* HUD */
+.hud{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+.hudInner{
+  height:100vh;
+  max-width:1200px;
+  margin:0 auto;
+  padding:60px 22px 22px;
+}
+
+h1{
+  font-size:54px;
+  margin:0 0 10px;
+  letter-spacing:-0.02em;
+}
+
+.lead{
+  opacity:.78;
+  margin:0;
+}
+
+/* one arrow that bobs */
+.down{
+  display:inline-block;
+  margin-right:8px;
+  animation: bob 1.2s ease-in-out infinite;
+}
+@keyframes bob{
+  50%{ transform: translateY(6px); }
+}
+
+/* “text on seat” — no box */
+.seatText{
+  position:absolute;
+  left:50%;
+  top:54%;
+  transform:translate(-50%,-50%);
+  width:min(680px, 92vw);
+  opacity:0;
+  transition:opacity 220ms ease;
+}
+.seatText.show{ opacity:1; }
+
+/* engraved look (simple, no glow, no background) */
+.engraved{
+  font-family:"DM Serif Display", serif;
+  margin:0;
+  white-space:pre-wrap;
+  line-height:1.6;
+  font-size:18px;
+  letter-spacing:0.02em;
+
+  color:#3b2b1c;            /* wood-ish ink */
+  mix-blend-mode:multiply;  /* blend into wood */
+}
+
+/* contact section */
+.contact{
+  padding:90px 18px 120px;
+  background:
+    radial-gradient(900px 500px at 30% 20%, rgba(255,255,255,.08), transparent),
+    radial-gradient(700px 500px at 80% 60%, rgba(255,255,255,.05), transparent),
+    #0b0b0d;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+.contactInner{
+  max-width:980px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1.05fr 1fr;
+  gap:18px;
+  align-items:start;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:16px;
+  padding:22px;
+  box-shadow:0 20px 70px rgba(0,0,0,.35);
+}
+
+.card h2{
+  margin:0 0 10px;
+  font-size:26px;
+  letter-spacing:-0.01em;
+}
+
+.card p{
+  margin:0 0 14px;
+  color:var(--muted);
+  line-height:1.55;
+}
+
+.form{
+  display:grid;
+  gap:12px;
+}
+
+input, textarea{
+  width:100%;
+  padding:12px 12px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.06);
+  color:var(--text);
+  font-size:16px;
+  font-family:inherit;
+  outline:none;
+}
+
+input::placeholder, textarea::placeholder{
+  color:rgba(255,255,255,.45);
+}
+
+input:focus, textarea:focus{
+  border-color:rgba(255,255,255,.28);
+  background:rgba(255,255,255,.08);
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px 14px;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.10);
+  color:rgba(255,255,255,.92);
+  font-weight:600;
+  font-size:15px;
+  cursor:pointer;
+}
+
+.btn:hover{ background:rgba(255,255,255,.14); }
+
+.smallNote{
+  font-size:13px;
+  color:rgba(255,255,255,.55);
+  margin-top:10px;
+}
+
+.footerLine{
+  max-width:980px;
+  margin:18px auto 0;
+  padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.08);
+  color:rgba(255,255,255,.45);
+  font-size:13px;
+}
+
+@media (max-width:900px){
+  h1{ font-size:42px; }
+  .contactInner{ grid-template-columns:1fr; }
+  .seatText{ top:60%; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="progressWrap"><div class="progressBar" id="bar"></div></div>
+
+<section class="stage" id="stage">
+  <div class="modelWrap">
+
+    <model-viewer
+      id="bench"
+      src="glb/bench.glb"
+      camera-controls
+      disable-pan
+      disable-zoom
+      interaction-prompt="none"
+      environment-image="neutral"
+      shadow-intensity="1"
+      exposure="1.1"
+      camera-orbit="20deg 70deg 7.5m">
+    </model-viewer>
+
+    <div class="hud">
+      <div class="hudInner">
+        <h1>Speciallavet snedkerarbejde</h1>
+        <p class="lead" id="lead">
+          <span class="down">↓</span><span id="leadLabel">Scroll for kontakt</span>
+        </p>
+      </div>
+
+      <div class="seatText" id="seatText">
+        <p class="engraved" id="engravedText"></p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="contact" id="kontakt">
+  <div class="contactInner">
+
+    <div class="card">
+      <h2>Kontakt</h2>
+      <p>
+        Beskriv opgaven kort, så vender jeg hurtigt tilbage.
+        Hvis du har billeder, så skriv “jeg sender billeder” — eller send dem på mail efterfølgende.
+      </p>
+      <p>
+        Email: kontakt@mail.dk<br>
+        Telefon: 12 34 56 78
+      </p>
+      <div class="smallNote">
+        Tip: Skriv gerne materiale, mål og ønsket tidsplan.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Få et tilbud</h2>
+
+      <form class="form"
+        action="mailto:kontakt@mail.dk"
+        method="post"
+        enctype="text/plain">
+
+        <input name="navn" placeholder="Navn" required />
+        <input name="telefon" placeholder="Telefon" />
+        <input name="email" type="email" placeholder="Email" required />
+        <textarea name="besked" rows="6" placeholder="Hvad skal der laves? Materiale/rum/mål/tidsplan..." required></textarea>
+
+        <button class="btn" type="submit">Send</button>
+      </form>
+
+      <div class="smallNote">
+        Når du trykker “Send”, åbner din mail-app en kladde med teksten.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footerLine">
+    © Andys Snedkerfirma
+  </div>
+</section>
+
+<script>
+const model = document.querySelector("#bench");
+const stage = document.querySelector("#stage");
+const bar = document.querySelector("#bar");
+const seatText = document.querySelector("#seatText");
+const engravedEl = document.querySelector("#engravedText");
+const leadLabel = document.querySelector("#leadLabel");
+
+let azSmooth = 20;
+
+function clamp01(n){ return Math.max(0, Math.min(1, n)); }
+function easeOutCubic(x){ return 1 - Math.pow(1 - x, 3); }
+
+const fullEngraved =
+`kontakt@mail.dk
+Telefon: 12 34 56 78
+
+Skriv for at få et tilbud.
+`;
+
+// ===== Scroll-lock typing state =====
+let lockActive = false;
+let lockScrollY = 0;
+let typingProgress = 0;
+let touchLastY = null;
+let justUnlockedUntil = 0;
+let wheelAccumulator = 0;
+
+const typingScrollPixels = 2600;
+
+// Camera config
+const azStart = 20;
+const azEnd = 215;
+const flipStart = 0.82;
+const lockStart = 0.88;
+const unlockNudge = 24;
+
+function setLock(state){
+  if (state === lockActive) return;
+  lockActive = state;
+
+  if (lockActive){
+    lockScrollY = window.scrollY;
+    touchLastY = null;
+    wheelAccumulator = 0;
+  } else {
+    justUnlockedUntil = performance.now() + 180;
+    requestAnimationFrame(() => {
+      window.scrollTo(0, lockScrollY + unlockNudge);
+    });
+  }
+}
+
+function onWheel(e){
+  if (!lockActive) return;
+  e.preventDefault();
+
+  const dy = Math.max(-120, Math.min(120, e.deltaY));
+  wheelAccumulator += dy;
+
+  typingProgress = clamp01(wheelAccumulator / typingScrollPixels);
+
+  if (typingProgress >= 1){
+    setLock(false);
+  }
+}
+
+function onTouchStart(e){
+  if (!lockActive) return;
+  if (!e.touches || !e.touches[0]) return;
+  touchLastY = e.touches[0].clientY;
+}
+
+function onTouchMove(e){
+  if (!lockActive) return;
+  if (!e.touches || !e.touches[0]) return;
+  e.preventDefault();
+
+  const y = e.touches[0].clientY;
+  const dy = (touchLastY == null) ? 0 : (touchLastY - y);
+  touchLastY = y;
+
+  wheelAccumulator += dy;
+  typingProgress = clamp01(wheelAccumulator / typingScrollPixels);
+
+  if (typingProgress >= 1){
+    setLock(false);
+  }
+}
+
+window.addEventListener("wheel", onWheel, { passive:false });
+window.addEventListener("touchstart", onTouchStart, { passive:false });
+window.addEventListener("touchmove", onTouchMove, { passive:false });
+
+function animate(){
+
+  if (lockActive && window.scrollY !== lockScrollY){
+    window.scrollTo(0, lockScrollY);
+  }
+
+  const rect = stage.getBoundingClientRect();
+  const total = stage.offsetHeight - window.innerHeight;
+  let progress = total > 0 ? clamp01((-rect.top) / total) : 0;
+
+  bar.style.width = (progress * 100).toFixed(1) + "%";
+
+  // rotate around
+  const effective = progress > flipStart ? flipStart : progress;
+  const azTarget = azStart + (azEnd - azStart) * effective;
+  azSmooth += (azTarget - azSmooth) * 0.08;
+
+  // flip
+  let tFlip = 0;
+  if (progress > flipStart){
+    tFlip = (progress - flipStart) / (1 - flipStart);
+    tFlip = clamp01(tFlip);
+  }
+
+  const freezeAtEnd = (typingProgress >= 1);
+  const tFlipForCam = (lockActive || freezeAtEnd) ? 1 : tFlip;
+
+  const polarStart = 70;
+  const polarEnd = 8;
+  const polar = polarStart + (polarEnd - polarStart) * easeOutCubic(tFlipForCam);
+
+  const distStart = 7.5;
+  const distEnd = 9.5;
+  let dist = distStart + (distEnd - distStart) * progress;
+  if (lockActive || freezeAtEnd) dist = distEnd;
+
+  model.cameraOrbit = `${azSmooth.toFixed(2)}deg ${polar.toFixed(2)}deg ${dist.toFixed(2)}m`;
+
+  // UI
+  if (progress < 0.78){
+    leadLabel.textContent = "Scroll for kontakt";
+    seatText.classList.remove("show");
+    engravedEl.textContent = "";
+    typingProgress = 0;
+    wheelAccumulator = 0;
+    if (lockActive) setLock(false);
+  } else if (progress < flipStart){
+    leadLabel.textContent = "Scroll for kontakt";
+    seatText.classList.remove("show");
+    engravedEl.textContent = "";
+    typingProgress = 0;
+    wheelAccumulator = 0;
+    if (lockActive) setLock(false);
+  } else {
+
+    seatText.classList.add("show");
+
+    const now = performance.now();
+    const canLock = (now > justUnlockedUntil);
+
+    if (!lockActive && typingProgress < 1 && progress >= lockStart && canLock){
+      lockScrollY = window.scrollY;
+      setLock(true);
+    }
+
+    const chars = Math.floor(fullEngraved.length * typingProgress);
+    engravedEl.textContent = fullEngraved.slice(0, chars);
+
+    leadLabel.textContent = "Scroll for kontakt";
+  }
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+</body>
+</html>
