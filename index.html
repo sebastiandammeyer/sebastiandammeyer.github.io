@@ -1,48 +1,103 @@
 <!DOCTYPE html>
 <html lang="da">
-
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Andys Snedkerfirma</title>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
-<title>Andys Snedkerfirma</title>
-
-<link rel="stylesheet" href="style.css">
-
+  <link rel="stylesheet" href="index.css"> 
 </head>
 
 <body>
 
-<header class="hero">
+  <header class="topbar">
+    <a class="brand" href="index.html">Andys Snedkerfirma</a>
 
-<div class="overlay">
+    <nav class="nav">
+      <a href="portfolio.html">Portfolio</a>
+      <a href="kontakt.html">Om mig</a>
+      <a class="nav-cta" href="kontakt.html">Få et tilbud</a>
+    </nav>
+  </header>
 
-<h1>Andys Snedkerfirma</h1>
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="kicker">Speciallavet snedkerarbejde</p>
 
-<p>Speciallavede løsninger i træ — kvalitet fra start til slut.</p>
+        <h1>
+          Fra idé til færdigt resultat
+        </h1>
 
-<a class="button" href="galleri.html">Få et tilbud</a>
+        <p class="lead">
+          Se udvalgte værker, eller send en kort beskrivelse og få et tilbud.
+        </p>
 
-</a>
+        <div class="hero-actions">
+          <a class="btn primary" href="kontakt.html">Få et tilbud</a>
+          <a class="btn" href="portfolio.html">Se portfolio</a>
+          <a class="btn ghost" href="kontakt.html">Se 3D / Om mig</a>
+        </div>
 
-</div>
+        <div class="hero-meta">
+          <div class="meta-item">
+            <div class="meta-title">Svar hurtigt</div>
+            <div class="meta-text">Typisk samme dag</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-title">Materialer</div>
+            <div class="meta-text">Træ, kombinationer, finish</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-title">Levering</div>
+            <div class="meta-text">Efter aftale</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-</header>
+    <section class="section">
+      <div class="section-inner">
+        <h2>Vælg en vej ind</h2>
+        <p class="section-lead">Klik dig hurtigt videre til det, du leder efter.</p>
 
-<section class="content">
+        <div class="cards">
+          <a class="card" href="portfolio.html">
+            <div class="card-title">Portfolio</div>
+            <div class="card-text">Se udvalgte værker, billeder og korte beskrivelser.</div>
+            <div class="card-link">Åbn →</div>
+          </a>
 
-<h2>Hvad jeg laver</h2>
+          <a class="card" href="kontakt.html">
+            <div class="card-title">Om mig</div>
+            <div class="card-text">Interaktiv visning af udvalgte værker (fx bænken).</div>
+            <div class="card-link">Åbn →</div>
+          </a>
 
-<p>
+          <a class="card" href="kontakt.html">
+            <div class="card-title">Kontakt</div>
+            <div class="card-text">Send en kort besked og få et tilbud.</div>
+            <div class="card-link">Åbn →</div>
+          </a>
+        </div>
+      </div>
+    </section>
 
-Jeg laver specialdesignede møbler, indbygget inventar,
-renoveringer af ødelagte ægteskabe til både private og erhverv.
-
-</p>
-
-</section>
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>© Andys Snedkerfirma</div>
+        <div class="footer-links">
+          <a href="portfolio.html">Portfolio</a>
+          <a href="kontakt.html">Om mig</a>
+          <a href="kontakt.html">Kontakt</a>
+        </div>
+      </div>
+    </footer>
+  </main>
 
 </body>
-
 </html>

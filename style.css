@@ -1,185 +1,174 @@
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 body{
-
-font-family: -apple-system, Helvetica, Arial, sans-serif;
-
-background:#fafafa;
-
-color:#222;
-
+  font-family:-apple-system, Helvetica, Arial, sans-serif;
+  background:#fafafa;
+  color:#222;
 }
-
 
 /* HERO IMAGE */
-
 .hero{
-
-height:100vh;
-
-background-image:url("images/94C5B47E-85C2-4A28-BE34-C25F019046BD_1_102_o.jpeg");
-
-background-size:cover;
-
-background-position:center;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
+  height:100vh;
+  background-image:url("images/baad.jpeg");
+  background-size:cover;
+  background-position:center;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
 }
-
 
 /* DARK OVERLAY */
-
 .overlay{
-
-background:rgba(0,0,0,0.45);
-
-color:white;
-
-text-align:center;
-
-padding:60px;
-
-border-radius:12px;
-
+  background:rgba(0,0,0,0.55);
+  color:white;
+  text-align:left;
+  padding:44px;
+  border-radius:14px;
+  max-width:760px;
+  width:100%;
+  backdrop-filter: blur(6px);
 }
 
-
-/* TEXT */
-
-h1{
-
-font-size:48px;
-
-margin-bottom:15px;
-
+/* TEXT (kun inde i overlay så du ikke rammer hele sitet senere) */
+.overlay h1{
+  font-size:44px;
+  line-height:1.05;
+  margin-bottom:12px;
+  letter-spacing:-0.02em;
 }
 
-p{
-
-font-size:20px;
-
-margin-bottom:25px;
-
+.overlay p{
+  font-size:18px;
+  line-height:1.5;
+  margin-bottom:18px;
+  opacity:0.9;
+  max-width:60ch;
 }
 
+/* CTA ROW */
+.cta{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:8px;
+}
 
-/* BUTTON */
-
+/* BUTTONS */
 .button{
-
-background:white;
-
-color:black;
-
-padding:14px 28px;
-
-text-decoration:none;
-
-border-radius:8px;
-
-font-weight:600;
-
-transition:0.3s;
-
+  background:white;
+  color:black;
+  padding:12px 18px;
+  text-decoration:none;
+  border-radius:10px;
+  font-weight:600;
+  transition:0.2s;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .button:hover{
-
-background:#ddd;
-
+  background:#e8e8e8;
 }
 
+.button.secondary{
+  background:rgba(255,255,255,0.12);
+  color:white;
+  border:1px solid rgba(255,255,255,0.18);
+}
+
+.button.secondary:hover{
+  background:rgba(255,255,255,0.18);
+}
 
 /* CONTENT */
-
 .content{
-
-max-width:900px;
-
-margin:auto;
-
-padding:80px 20px;
-
-}
-.page-hero{
-  padding: 90px 20px 30px;
-  background: #111;
-  color: #fff;
+  max-width:900px;
+  margin:0 auto;
+  padding:70px 20px 90px;
 }
 
-.page-hero-inner{
-  max-width: 900px;
-  margin: 0 auto;
+.content h2{
+  font-size:26px;
+  margin-bottom:12px;
+  letter-spacing:-0.01em;
 }
 
-.backlink{
-  display: inline-block;
-  color: rgba(255,255,255,0.8);
-  text-decoration: none;
-  margin-bottom: 16px;
+.content p{
+  font-size:18px;
+  line-height:1.65;
+  color:#333;
+  max-width:70ch;
 }
 
-.backlink:hover{
-  color: #fff;
+/* responsive */
+@media (max-width:600px){
+  .overlay{
+    padding:28px;
+    text-align:left;
+  }
+  .overlay h1{
+    font-size:34px;
+  }
+  .overlay p{
+    font-size:16px;
+  }
+}
+/* ---------- TOPBAR ---------- */
+
+.topbar{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 28px;
+
+  background:rgba(0,0,0,0.35);
+  backdrop-filter:blur(8px);
+
+  z-index:100;
 }
 
-.page{
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 40px 20px 80px;
-  display: grid;
-  gap: 24px;
+.brand{
+  color:white;
+  text-decoration:none;
+  font-weight:600;
+  font-size:18px;
 }
 
-.card{
-  background: #fff;
-  border-radius: 12px;
-  padding: 28px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+.nav{
+  display:flex;
+  gap:18px;
 }
 
-.form{
-  display: grid;
-  gap: 14px;
-  margin-top: 12px;
+.nav a{
+  color:rgba(255,255,255,0.85);
+  text-decoration:none;
+  font-size:14px;
 }
 
-label{
-  display: grid;
-  gap: 6px;
-  font-size: 14px;
+.nav a:hover{
+  color:white;
 }
 
-input, textarea{
-  width: 100%;
-  padding: 12px 12px;
-  border-radius: 10px;
-  border: 1px solid rgba(0,0,0,0.12);
-  font-size: 16px;
+.nav-cta{
+  background:white;
+  color:black !important;
+  padding:8px 14px;
+  border-radius:8px;
+  font-weight:600;
 }
 
-input:focus, textarea:focus{
-  outline: none;
-  border-color: rgba(0,0,0,0.4);
-}
+/* HERO lidt ned så menu ikke overlapper */
 
-.small{
-  font-size: 14px;
-  opacity: 0.75;
-  margin-top: 14px;
-}
-
-.footer{
-  padding: 30px 20px;
-  text-align: center;
-  opacity: 0.7;
+.hero{
+  padding-top:90px;
 }
