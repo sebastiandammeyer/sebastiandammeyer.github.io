@@ -48,9 +48,9 @@ body{
 .stage{
   height:420vh;
   background:
-    radial-gradient(900px 450px at 70% 40%, rgba(255,255,255,.10), transparent),
-    radial-gradient(700px 450px at 30% 70%, rgba(255,255,255,.06), transparent),
-    #0b0b0d;
+    radial-gradient(900px 450px at 70% 40%, rgba(255,230,200,.10), transparent),
+    radial-gradient(700px 450px at 30% 70%, rgba(210,180,140,.06), transparent),
+    #1b1611;
   position:relative;
 }
 
@@ -101,17 +101,25 @@ h1{
   50%{ transform: translateY(6px); }
 }
 
-/* “text on seat” — no box */
 .seatText{
   position:absolute;
-  left:50%;
-  top:54%;
+
+  left:58%;   /* ← var 50% */
+  top:58%;    /* lidt lavere også */
+
   transform:translate(-50%,-50%);
-  width:min(680px, 92vw);
+
+  width:min(520px, 80vw);
+
+  text-align:left;
+
   opacity:0;
   transition:opacity 220ms ease;
 }
-.seatText.show{ opacity:1; }
+
+.seatText.show{
+  opacity:1;
+}
 
 /* engraved look (simple, no glow, no background) */
 .engraved{
@@ -244,7 +252,7 @@ input:focus, textarea:focus{
       disable-pan
       disable-zoom
       interaction-prompt="none"
-      environment-image="neutral"
+      environment-image="legacy"
       shadow-intensity="1"
       exposure="1.1"
       camera-orbit="20deg 70deg 7.5m">
